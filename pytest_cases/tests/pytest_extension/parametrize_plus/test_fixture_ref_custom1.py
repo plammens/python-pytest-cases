@@ -3,10 +3,9 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-
 from pytest_harvest import saved_fixture, get_session_synthesis_dct
-from pytest_cases import parametrize_plus, fixture_ref, pytest_fixture_plus
 
+from pytest_cases import parametrize_plus, fixture_ref, fixture_plus
 
 has_pytest_param = hasattr(pytest, 'param')
 
@@ -20,7 +19,7 @@ if has_pytest_param:
         return 'a'
 
 
-    @pytest_fixture_plus
+    @fixture_plus
     @saved_fixture
     @pytest.mark.parametrize('i', [5, 6])
     def b(i):

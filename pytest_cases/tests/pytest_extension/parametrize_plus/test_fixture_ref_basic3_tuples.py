@@ -3,29 +3,30 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import pytest_parametrize_plus, fixture_ref, pytest_fixture_plus
+
+from pytest_cases import parametrize_plus, fixture_ref, fixture_plus
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize('val', ['b', 'c'])
 def myfix(val):
     return val
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize('val', [0, -1])
 def myfix2(val):
     return val
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize('val', [('d', 3),
                                  ('e', 4)])
 def my_tuple(val):
     return val
 
 
-@pytest_parametrize_plus('p,q', [('a', 1),
+@parametrize_plus('p,q', [('a', 1),
                                  (fixture_ref(myfix), 2),
                                  (fixture_ref(myfix), fixture_ref(myfix2)),
                                  (fixture_ref(myfix), fixture_ref(myfix)),

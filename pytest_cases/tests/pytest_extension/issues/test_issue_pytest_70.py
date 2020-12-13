@@ -3,11 +3,12 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import fixture_ref, pytest_parametrize_plus, pytest_fixture_plus
+
+from pytest_cases import fixture_ref, parametrize_plus, fixture_plus
 
 
-@pytest_fixture_plus
-@pytest_parametrize_plus("variant", ['A', 'B'])
+@fixture_plus
+@parametrize_plus("variant", ['A', 'B'])
 def book1(variant):
     return variant
 
@@ -17,7 +18,7 @@ def book2():
     return
 
 
-@pytest_parametrize_plus("name", [
+@parametrize_plus("name", [
     fixture_ref(book1),
     'hi',
     'ih',

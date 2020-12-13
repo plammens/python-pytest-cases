@@ -5,11 +5,10 @@
 from distutils.version import LooseVersion
 from itertools import product
 
-from six import string_types
 import pytest
+from six import string_types
 
-from pytest_cases import pytest_fixture_plus
-
+from pytest_cases import fixture_plus
 
 STEREO_PATHS = ['stereo 1.wav', 'stereo 2.wav']
 CFG_TYPES = [list, dict]
@@ -42,7 +41,7 @@ else:
     a = UnOrderedStateAsserter()
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize("path", STEREO_PATHS)
 @pytest.mark.parametrize("cfg_factory", CFG_TYPES)   # not actual params
 def stereo_cfg(path, cfg_factory, request):
@@ -90,7 +89,7 @@ def _id(x):
     return "{cfg_factory}-{path}".format(path=path, cfg_factory=cfg_factory.__name__)
 
 
-@pytest_fixture_plus(scope='module')
+@fixture_plus(scope='module')
 @pytest.mark.parametrize("cfg_factory,path", product(CFG_TYPES, STEREO_PATHS), ids=_id)
 def stereo_cfg_2(path, request, cfg_factory):
     """

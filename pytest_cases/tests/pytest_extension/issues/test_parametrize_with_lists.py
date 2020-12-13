@@ -3,10 +3,11 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import pytest_fixture_plus
+
+from pytest_cases import fixture_plus
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize(['c', 'd'], [(0, 0), (1, 1)])
 def f(c, d):
     pass

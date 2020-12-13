@@ -4,7 +4,8 @@
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 # test.py
 import pytest
-from pytest_cases import fixture_ref, pytest_parametrize_plus
+
+from pytest_cases import fixture_ref, parametrize_plus
 
 
 @pytest.fixture
@@ -17,7 +18,7 @@ def bar():
     return 2
 
 
-@pytest_parametrize_plus("arg", [fixture_ref("foo"), fixture_ref("bar")])
+@parametrize_plus("arg", [fixture_ref("foo"), fixture_ref("bar")])
 def test_thing(arg):
     print(arg)
 
@@ -27,6 +28,6 @@ class TestCase:
     def test_thing_pytest(self, arg):
         print(arg)
 
-    @pytest_parametrize_plus("arg", [fixture_ref("foo"), fixture_ref("bar")])
+    @parametrize_plus("arg", [fixture_ref("foo"), fixture_ref("bar")])
     def test_thing_cases(self, arg):
         print(arg)

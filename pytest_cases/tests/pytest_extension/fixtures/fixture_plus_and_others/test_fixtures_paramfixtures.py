@@ -3,8 +3,8 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import param_fixture, param_fixtures, pytest_fixture_plus
 
+from pytest_cases import param_fixture, param_fixtures, fixture_plus
 
 # pytest.param - not available in all versions
 has_pytest_param = hasattr(pytest, 'param')
@@ -56,7 +56,7 @@ param_fixtures("parg1, parg2", [("a", "b"), ("c", "d")])
 """Two parameter fixtures"""
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize("arg1, arg2", [
     pytest_param(1, 2, id="f_a"),
     pytest_param(3, 4, id="f_b")

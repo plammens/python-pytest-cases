@@ -3,10 +3,11 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import unpack_fixture, pytest_fixture_plus
+
+from pytest_cases import unpack_fixture, fixture_plus
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize("o", ['hello', 'world'])
 def c(o):
     return o, o[0]

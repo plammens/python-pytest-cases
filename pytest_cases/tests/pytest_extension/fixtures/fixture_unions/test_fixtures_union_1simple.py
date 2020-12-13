@@ -2,12 +2,12 @@
 #          + All contributors to <https://github.com/smarie/python-pytest-cases>
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
-from pytest_cases import param_fixture, fixture_union, pytest_fixture_plus
+from pytest_cases import param_fixture, fixture_union, fixture_plus
 
 a = param_fixture('a', ['x', 'y'])
 
 
-@pytest_fixture_plus(params=[1, 2])
+@fixture_plus(params=[1, 2])
 def b(request):
     # make sure that if this is called, then it is for a good reason
     assert request.param in [1, 2]

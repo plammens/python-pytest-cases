@@ -3,7 +3,8 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import pytest_parametrize_plus, pytest_fixture_plus, fixture_ref, parametrize_plus
+
+from pytest_cases import fixture_ref, parametrize_plus, fixture_plus
 from pytest_cases.tests.conftest import global_fixture
 
 
@@ -12,13 +13,13 @@ def world_str():
     return 'world'
 
 
-@pytest_fixture_plus
-@pytest_parametrize_plus('who', [fixture_ref(world_str), 'you'])
+@fixture_plus
+@parametrize_plus('who', [fixture_ref(world_str), 'you'])
 def greetings(who):
     return 'hello ' + who
 
 
-@pytest_parametrize_plus('main_msg', ['nothing', fixture_ref(world_str), fixture_ref(greetings),
+@parametrize_plus('main_msg', ['nothing', fixture_ref(world_str), fixture_ref(greetings),
                                       fixture_ref(global_fixture)])
 @pytest.mark.parametrize('ending', ['?', '!'])
 def test_prints(main_msg, ending):

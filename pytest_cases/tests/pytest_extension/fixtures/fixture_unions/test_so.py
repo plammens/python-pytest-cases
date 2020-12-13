@@ -4,15 +4,15 @@
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
 
-from pytest_cases import fixture_union, pytest_fixture_plus, NOT_USED
+from pytest_cases import fixture_union, fixture_plus, NOT_USED
 
 
-@pytest_fixture_plus(params=[1, 2, 3])
+@fixture_plus(params=[1, 2, 3])
 def lower(request):
     return "i" * request.param
 
 
-# @pytest_fixture_plus(params=[1, 2])
+# @fixture_plus(params=[1, 2])
 # def upper(request):
 #     return "I" * request.param
 

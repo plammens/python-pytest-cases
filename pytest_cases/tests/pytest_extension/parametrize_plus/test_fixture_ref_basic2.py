@@ -4,7 +4,7 @@
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
 
-from pytest_cases import pytest_parametrize_plus, pytest_fixture_plus, fixture_ref
+from pytest_cases import parametrize_plus, fixture_plus, fixture_ref
 
 
 @pytest.fixture
@@ -12,15 +12,15 @@ def a():
     return 'a'
 
 
-@pytest_fixture_plus
-@pytest_parametrize_plus('second_letter', [fixture_ref('a'),
+@fixture_plus
+@parametrize_plus('second_letter', [fixture_ref('a'),
                                            'o'])
 def b(second_letter):
     # second_letter = 'a'
     return 'b' + second_letter
 
 
-@pytest_parametrize_plus('arg', ['z',
+@parametrize_plus('arg', ['z',
                                  fixture_ref(a),
                                  fixture_ref(b),
                                  'o'])

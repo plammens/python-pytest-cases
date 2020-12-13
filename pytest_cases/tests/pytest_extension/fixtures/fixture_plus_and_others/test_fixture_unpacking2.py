@@ -3,7 +3,8 @@
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
-from pytest_cases import fixture_plus, pytest_fixture_plus, fixture_union
+
+from pytest_cases import fixture_plus, fixture_union
 
 
 @fixture_plus(unpack_into="a,b")
@@ -17,7 +18,7 @@ def test_function(a, b):
     assert a in ('hello', 'world')
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize("o", ['yeepee', 'yay'])
 def root2(o):
     return o, o[0]

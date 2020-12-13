@@ -4,7 +4,7 @@
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
 import pytest
 
-from pytest_cases import parametrize_plus, pytest_fixture_plus, fixture_ref
+from pytest_cases import parametrize_plus, fixture_plus, fixture_ref
 
 
 @pytest.fixture
@@ -12,7 +12,7 @@ def a():
     return 'A', 'AA'
 
 
-@pytest_fixture_plus
+@fixture_plus
 @pytest.mark.parametrize('arg', [1, 2])
 def b(arg):
     return "B%s" % arg
