@@ -2,7 +2,7 @@
 #          + All contributors to <https://github.com/smarie/python-pytest-cases>
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
-from pytest_cases import cases_data, CaseDataGetter, THIS_MODULE, case_tags
+from pytest_cases import cases_data, CaseDataGetter, THIS_MODULE, case
 from ..utils import nb_pytest_parameters, get_pytest_param
 
 try:  # python 3.2+
@@ -23,7 +23,7 @@ def load_file(file_name):
     return "<dummy content for " + file_name + ">"
 
 
-@case_tags('a')
+@case(tags=('a',))
 def case_1():
     # type: () -> CaseData
     ins = load_file('file1')
@@ -31,7 +31,7 @@ def case_1():
     return ins, outs, err
 
 
-@case_tags('a', 'b')
+@case(tags=('a', 'b'))
 def case_2():
     # type: () -> CaseData
     ins = load_file('file2')
@@ -39,7 +39,7 @@ def case_2():
     return ins, outs, err
 
 
-@case_tags('b', 'c')
+@case(tags=('b', 'c'))
 def case_3():
     # type: () -> CaseData
     ins = load_file('file3')

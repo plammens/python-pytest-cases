@@ -2,16 +2,16 @@
 #          + All contributors to <https://github.com/smarie/python-pytest-cases>
 #
 # License: 3-clause BSD, <https://github.com/smarie/python-pytest-cases/blob/master/LICENSE>
+from pytest_cases import cases_data, CaseDataGetter, THIS_MODULE, case
 from ..example_code import super_function_i_want_to_test
 
-from pytest_cases import cases_data, CaseDataGetter, THIS_MODULE, case_tags
 try:  # python 3.5+
     from pytest_cases import CaseData
 except ImportError:
     pass
 
 
-@case_tags('a', 'b')
+@case(tags=('a', 'b'))
 def case_a_and_b():
     # type: () -> CaseData
     ins = dict(a=1, b=2)
@@ -19,7 +19,7 @@ def case_a_and_b():
     return ins, outs, None
 
 
-@case_tags('a')
+@case(tags=('a',))
 def case_a():
     # type: () -> CaseData
     ins = dict(a=1, b=2)
